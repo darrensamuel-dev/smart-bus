@@ -1,0 +1,41 @@
+@import url('https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,500..900&family=IBM+Plex+Sans:wght@400;500;600&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --font-display: "Archivo", "Arial Narrow", sans-serif;
+  --font-sans: "IBM Plex Sans", system-ui, sans-serif;
+  --color-paper: #edf1ee;
+  --color-ink: #10242b;
+  --color-board: #0b1a20;
+  --color-amber: #ffb81c;
+  --color-moss: #1f6f5b;
+  --color-signal: #d6402f;
+  --color-mist: #d3dcd7;
+}
+
+html, body, #root { height: 100%; }
+body { margin: 0; background: var(--color-paper); color: var(--color-ink); font-family: var(--font-sans); }
+
+/* Destination-board look for route numbers */
+.board { font-family: var(--font-display); font-stretch: 75%; font-weight: 800; letter-spacing: .02em; }
+.display { font-family: var(--font-display); font-weight: 800; font-stretch: 80%; }
+
+/* Live bus pins: icons are cached per route+crowd, so position changes glide */
+.bus-marker { transition: transform 2.9s linear; }
+.bus-pin {
+  font: 800 12px/1 var(--font-display);
+  font-stretch: 75%;
+  color: #fff;
+  padding: 5px 7px;
+  border-radius: 4px;
+  border: 2px solid #fff;
+  box-shadow: 0 1px 5px rgba(0, 0, 0, .45);
+  text-align: center;
+  white-space: nowrap;
+}
+
+:focus-visible { outline: 3px solid var(--color-amber); outline-offset: 2px; }
+
+@media (prefers-reduced-motion: reduce) {
+  .bus-marker { transition: none; }
+}
